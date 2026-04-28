@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All | Vedhasri Ayurveda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="brand"><img src="assets/images/logo.jpeg" alt="Vedhasri" class="brand-logo"></a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Shop All</a>
+                <a href="about.html">Our Story</a>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="wishlist.html" class="icon-btn" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-count" style="display: none;">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="section" style="padding-top: var(--spacing-xl);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Formulations</h2>
+            </div>
+            
+            <!-- Filters & Search -->
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search for products...">
+            </div>
+            
+            <div class="filter-bar" id="categoryFilters">
+                <button class="filter-btn active" data-cat="all">All Products</button>
+                <button class="filter-btn" data-cat="healthcare">Health Care</button>
+                <button class="filter-btn" data-cat="homecare">Home Care</button>
+                <button class="filter-btn" data-cat="personalcare">Personal Care</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-4 gap-md" id="productGrid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('productGrid');
+            const searchInput = document.getElementById('searchInput');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            let currentCategory = 'all';
+            let searchQuery = '';
+
+            // Check URL for category
+            const urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.has('cat')) {
+                currentCategory = urlParams.get('cat');
+                filterBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.cat === currentCategory);
+                });
+            }
+
+            function renderProducts() {
+                grid.innerHTML = '';
+                
+                const filtered = products.filter(p => {
+                    const matchCategory = currentCategory === 'all' || p.category === currentCategory;
+                    const matchSearch = p.name.toLowerCase().includes(searchQuery);
+                    return matchCategory && matchSearch;
+                });
+                
+                if (filtered.length === 0) {
+                    grid.innerHTML = `
+                        <div class="empty-state" style="grid-column: 1 / -1;">
+                            <i class="fa-solid fa-box-open"></i>
+                            <h3>No products found</h3>
+                            <p>Try adjusting your search or filters.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                filtered.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card animate-fade-in';
+                    const isWished = wishlist.some(item => item.id === product.id) ? 'active' : '';
+                    
+                    card.innerHTML = `
+                        <div class="product-image-wrap">
+                            <button class="wishlist-btn ${isWished}" data-id="${product.id}" onclick="toggleWishlist(${product.id}); updateWishlistUI();">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                            <a href="product.html?id=${product.id}">
+                                <img src="${product.image}" alt="${product.name}">
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">${product.category}</span>
+                            <a href="product.html?id=${product.id}" class="product-title">${product.name}</a>
+                            <div class="product-price">${formatPrice(product.price)}</div>
+                            <div class="product-actions">
+                                <button class="btn btn-outline" onclick="addToCart(${product.id})">Add to Cart</button>
+                                <button class="btn btn-primary" onclick="addToCart(${product.id}); window.location.href='cart.html'">Buy Now</button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            // Event Listeners
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                renderProducts();
+            });
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentCategory = e.target.dataset.cat;
+                    renderProducts();
+                });
+            });
+
+            renderProducts();
+        });
+    </script>
+</body>
+</html>

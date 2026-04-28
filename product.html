@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Vedhasri Ayurveda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="brand"><img src="assets/images/logo.jpeg" alt="Vedhasri" class="brand-logo"></a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop All</a>
+                <a href="about.html">Our Story</a>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="wishlist.html" class="icon-btn" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-count" style="display: none;">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="section" style="padding-top: var(--spacing-xxl);">
+        <div class="container" id="productContainer">
+            <!-- Injected via JS -->
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('productContainer');
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+
+            const product = products.find(p => p.id === productId);
+
+            if (!product) {
+                window.location.href = 'products.html';
+                return;
+            }
+
+            document.title = `${product.name} | Vedhasri Ayurveda`;
+            
+            const isWished = wishlist.some(item => item.id === product.id) ? 'active' : '';
+
+            container.innerHTML = `
+                <div class="product-detail-grid">
+                    <div class="product-gallery animate-fade-in">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-meta animate-fade-in" style="animation-delay: 0.1s">
+                        <p class="product-category" style="font-size: 1rem; margin-bottom: var(--spacing-sm);">${product.category}</p>
+                        <h1>${product.name}</h1>
+                        <div class="price">${formatPrice(product.price)}</div>
+                        
+                        <div class="product-description">
+                            <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: var(--spacing-xs);">Benefits & Description</h3>
+                            <p>${product.description}</p>
+                        </div>
+
+                        <div class="product-actions" style="margin-top: var(--spacing-xl); display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                            <button class="btn btn-outline" style="flex: 1;" onclick="addToCart(${product.id})">Add to Cart</button>
+                            <button class="btn btn-primary" style="flex: 1;" onclick="addToCart(${product.id}); window.location.href='cart.html'">Buy Now</button>
+                            <button class="wishlist-btn ${isWished}" data-id="${product.id}" style="position: static; width: auto; padding: 0 var(--spacing-md); border-radius: var(--radius-full); box-shadow: none; border: 1px solid var(--border-color);" onclick="toggleWishlist(${product.id}); updateWishlistUI();">
+                                <i class="fa-solid fa-heart" style="margin-right: 8px;"></i> Wishlist
+                            </button>
+                        </div>
+
+                        <div class="trust-badges">
+                            <div class="trust-badge"><i class="fa-solid fa-leaf"></i> 100% Natural</div>
+                            <div class="trust-badge"><i class="fa-solid fa-ban"></i> No Chemicals</div>
+                            <div class="trust-badge"><i class="fa-solid fa-shield-halved"></i> Safe & Secure</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reviews-section animate-fade-in" style="animation-delay: 0.2s">
+                    <h3 style="margin-bottom: var(--spacing-lg);">Customer Reviews</h3>
+                    
+                    <div id="dynamicReviewsContainer" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-xl);">
+                        <!-- Reviews injected here -->
+                    </div>
+
+                    <div class="review-form-container">
+                        <h4 style="margin-bottom: var(--spacing-md);">Write a Review</h4>
+                        <form id="reviewForm">
+                            <div class="form-group">
+                                <label for="r_name">Name</label>
+                                <input type="text" id="r_name" class="form-control" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="r_rating">Rating</label>
+                                <select id="r_rating" class="form-control" required>
+                                    <option value="5">★★★★★ (5/5)</option>
+                                    <option value="4">★★★★☆ (4/5)</option>
+                                    <option value="3">★★★☆☆ (3/5)</option>
+                                    <option value="2">★★☆☆☆ (2/5)</option>
+                                    <option value="1">★☆☆☆☆ (1/5)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="r_text">Review</label>
+                                <textarea id="r_text" class="form-control" rows="3" required placeholder="What did you like about it?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            // Review System Logic
+            const reviewsKey = `reviews_product_${productId}`;
+            const reviewsContainer = document.getElementById('dynamicReviewsContainer');
+            const reviewForm = document.getElementById('reviewForm');
+
+            function getStars(rating) {
+                const filled = '<i class="fa-solid fa-star"></i>'.repeat(rating);
+                const empty = '<i class="fa-regular fa-star"></i>'.repeat(5 - rating);
+                return filled + empty;
+            }
+
+            function loadReviews() {
+                const reviews = JSON.parse(localStorage.getItem(reviewsKey)) || [];
+                
+                if (reviews.length === 0) {
+                    reviewsContainer.innerHTML = '<p style="color: var(--text-light); padding: var(--spacing-md) 0;">No reviews yet.</p>';
+                    return;
+                }
+
+                let html = '';
+                reviews.forEach(r => {
+                    html += `
+                        <div class="review-card">
+                            <div class="review-stars">${getStars(r.rating)}</div>
+                            <div class="review-author">${r.name}</div>
+                            <div class="review-text">"${r.comment}"</div>
+                        </div>
+                    `;
+                });
+                reviewsContainer.innerHTML = html;
+            }
+
+            loadReviews(); // Initial load
+
+            reviewForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('r_name').value.trim();
+                const rating = parseInt(document.getElementById('r_rating').value);
+                const comment = document.getElementById('r_text').value.trim();
+
+                const reviews = JSON.parse(localStorage.getItem(reviewsKey)) || [];
+                reviews.push({ name, rating, comment });
+                localStorage.setItem(reviewsKey, JSON.stringify(reviews));
+
+                reviewForm.reset();
+                loadReviews();
+            });
+        });
+    </script>
+</body>
+</html>

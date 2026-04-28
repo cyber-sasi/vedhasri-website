@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedhasri Ayurveda | Premium Natural Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="brand"><img src="assets/images/logo.jpeg" alt="Vedhasri" class="brand-logo"></a>
+
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="products.html">Shop All</a>
+                <a href="about.html">Our Story</a>
+            </nav>
+
+            <div class="header-icons">
+                <a href="wishlist.html" class="icon-btn" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-count" style="display: none;">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero animate-fade-in" style="background-image: url('assets/images/hero.png');">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Pure Nature,<br>Ancient Wisdom.</h1>
+                <p>Discover premium Ayurvedic formulations designed to bring harmony and wellness to your daily life.
+                    100% natural and cruelty-free.</p>
+                <a href="products.html" class="btn btn-primary">Shop Collection <i class="fa-solid fa-arrow-right"
+                        style="margin-left: 8px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop by Category</h2>
+            </div>
+            <div class="grid grid-cols-3 gap-lg">
+                <a href="products.html?cat=healthcare" class="category-card">
+                    <img src="assets/images/img1.png" alt="Health Care" onerror="this.src='assets/images/facewash.png'">
+                    <div class="category-content">
+                        <h3>Health Care</h3>
+                    </div>
+                </a>
+                <a href="products.html?cat=homecare" class="category-card">
+                    <img src="assets/images/img47.png" alt="Home Care" onerror="this.src='assets/images/hairoil.png'">
+                    <div class="category-content">
+                        <h3>Home Care</h3>
+                    </div>
+                </a>
+                <a href="products.html?cat=personalcare" class="category-card">
+                    <img src="assets/images/img50.png" alt="Personal Care"
+                        onerror="this.src='assets/images/capsules.png'">
+                    <div class="category-content">
+                        <h3>Personal Care</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" style="background-color: white;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bestsellers</h2>
+            </div>
+            <div class="grid grid-cols-4 gap-md" id="featured-products">
+                <!-- Products will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="assets/images/logo.jpeg" alt="Vedhasri" class="footer-brand-logo">
+                    <p style="font-size: 0.95rem; margin-bottom: var(--spacing-md); line-height: 1.6;">Authentic Ayurvedic wellness products crafted with purity and devotion. Discover the power of ancient wisdom tailored for modern lifestyles.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.2rem; letter-spacing: 1px;">Quick Links</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li><a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-angle-right" style="font-size: 0.8rem;"></i> Home</a></li>
+                        <li><a href="products.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-angle-right" style="font-size: 0.8rem;"></i> Shop All</a></li>
+                        <li><a href="about.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-angle-right" style="font-size: 0.8rem;"></i> Our Story</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.2rem; letter-spacing: 1px;">Contact Details</h4>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fa-solid fa-location-dot" style="margin-top: 4px; color: var(--secondary-color);"></i>
+                        <span>Vadamadurai Road, V Sithoor<br>Ricemill Opposite - 624802</span>
+                    </p>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-phone" style="color: var(--secondary-color);"></i>
+                        <span>+91 84893 07118</span>
+                    </p>
+                    <p style="font-size: 0.95rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-envelope" style="color: var(--secondary-color);"></i>
+                        <span>venialagar68@gmail.com</span>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vedhasri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('featured-products');
+
+            // Render featured products
+            const featured = products.filter(p => p.isFeatured).slice(0, 4);
+
+            featured.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card animate-fade-in';
+
+                const isWished = wishlist.some(item => item.id === product.id) ? 'active' : '';
+
+                card.innerHTML = `
+                    <div class="product-image-wrap">
+                        <button class="wishlist-btn ${isWished}" data-id="${product.id}" onclick="toggleWishlist(${product.id}); updateWishlistUI();">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                        <a href="product.html?id=${product.id}">
+                            <img src="${product.image}" alt="${product.name}">
+                        </a>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">${product.category}</span>
+                        <a href="product.html?id=${product.id}" class="product-title">${product.name}</a>
+                        <div class="product-price">${formatPrice(product.price)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline" onclick="addToCart(${product.id})">Add to Cart</button>
+                            <button class="btn btn-primary" onclick="addToCart(${product.id}); window.location.href='cart.html'">Buy Now</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

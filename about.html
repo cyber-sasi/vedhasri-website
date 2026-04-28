@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Vedhasri Ayurveda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            text-align: center;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .story-content p {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .story-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .mission-statement {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            font-style: italic;
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg);
+            border-left: 4px solid var(--secondary-color);
+            background-color: var(--background-color);
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .story-features {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="brand"><img src="assets/images/logo.jpeg" alt="Vedhasri" class="brand-logo"></a>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop All</a>
+                <a href="about.html" class="active">Our Story</a>
+            </nav>
+
+            <div class="header-icons">
+                <a href="wishlist.html" class="icon-btn" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-count" style="display: none;">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero story-hero-section"
+        style="background-image: url('assets/images/hero.png'); margin-bottom: var(--spacing-xxl);">
+        <div class="container">
+            <div class="story-hero-content">
+                <h1 class="story-title">OUR STORY</h1>
+                <div class="story-divider"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container story-content animate-fade-in" style="animation-delay: 0.1s;">
+
+            <p>At <strong>Vedhasri</strong>, we believe in the power of nature and ancient Ayurvedic wisdom. Our journey
+                began with a simple mission — to provide pure, natural, and chemical-free products that promote true
+                wellness from the outside in.</p>
+
+            <div class="mission-statement">
+                "Our goal is to bring Ayurveda into modern lifestyles and help people live healthier, balanced lives."
+            </div>
+
+            <p>We carefully craft our products using traditional methods and high-quality herbs to ensure absolute
+                safety and effectiveness. Every product we offer is made with care, respect for nature, and a commitment
+                to cruelty-free practices.</p>
+
+            <div class="story-features">
+                <div>
+                    <i class="fa-solid fa-leaf feature-icon"></i>
+                    <div class="feature-title">100% Natural</div>
+                    <p style="font-size: 0.9rem;">Sourced directly from nature, free from harmful toxins.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-mortar-pestle feature-icon"></i>
+                    <div class="feature-title">Traditional Methods</div>
+                    <p style="font-size: 0.9rem;">Prepared according to time-tested Ayurvedic texts.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-shield-heart feature-icon"></i>
+                    <div class="feature-title">Safe & Effective</div>
+                    <p style="font-size: 0.9rem;">Gentle on the skin and body, yet powerfully effective.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: var(--spacing-xl); font-weight: 500;">Join us in embracing natural healing and a
+                better way of living.</p>
+
+            <div style="margin-top: var(--spacing-xl);">
+                <a href="products.html" class="btn btn-primary">Shop Now</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="assets/images/logo.jpeg" alt="Vedhasri" class="footer-brand-logo">
+                    <p style="font-size: 0.95rem; margin-bottom: var(--spacing-md); line-height: 1.6;">Authentic Ayurvedic wellness products crafted with purity and devotion. Discover the power of ancient wisdom tailored for modern lifestyles.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.2rem; letter-spacing: 1px;">Quick Links</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li><a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-angle-right" style="font-size: 0.8rem;"></i> Home</a></li>
+                        <li><a href="products.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-angle-right" style="font-size: 0.8rem;"></i> Shop All</a></li>
+                        <li><a href="about.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-angle-right" style="font-size: 0.8rem;"></i> Our Story</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.2rem; letter-spacing: 1px;">Contact Details</h4>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fa-solid fa-location-dot" style="margin-top: 4px; color: var(--secondary-color);"></i>
+                        <span>Vadamadurai Road, V Sithoor<br>Ricemill Opposite - 624802</span>
+                    </p>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-phone" style="color: var(--secondary-color);"></i>
+                        <span>+91 84893 07118</span>
+                    </p>
+                    <p style="font-size: 0.95rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-envelope" style="color: var(--secondary-color);"></i>
+                        <span>venialagar68@gmail.com</span>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vedhasri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
