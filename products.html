@@ -53,6 +53,8 @@
                 <button class="filter-btn" data-cat="healthcare">Health Care</button>
                 <button class="filter-btn" data-cat="homecare">Home Care</button>
                 <button class="filter-btn" data-cat="personalcare">Personal Care</button>
+                <button class="filter-btn" data-cat="agrocare">Agro Care</button>
+                <button class="filter-btn" data-cat="foodandbeverages">Food & Beverages</button>
             </div>
 
             <!-- Product Grid -->
@@ -70,17 +72,44 @@
             const grid = document.getElementById('productGrid');
             const searchInput = document.getElementById('searchInput');
             const filterBtns = document.querySelectorAll('.filter-btn');
+            const sectionTitle = document.querySelector('.section-title h2');
             
             let currentCategory = 'all';
             let searchQuery = '';
+            let currentBrand = 'all';
+ 
+            // Brand Mapping for robust filtering
+            const brandMap = {
+                'elements': { name: 'Elements Wellness', regex: /\belements wellness\b/i },
+                'onon': { name: 'ON & ON', regex: /\bon\s*&\s*on\b|\bon&on\b/i },
+                'indiagro': { name: 'Indiagro', regex: /\bindiagro\b/i },
+                'neustar': { name: 'Neustar', regex: /\bneustar\b/i },
+                'mihome': { name: 'Mi Home', regex: /\bmi home\b|\bmi\b/i },
+                'aahar': { name: 'Aahar', regex: /\baahar\b/i }
+            };
 
-            // Check URL for category
+            // Check URL for category or brand
             const urlParams = new URLSearchParams(window.location.search);
             if(urlParams.has('cat')) {
                 currentCategory = urlParams.get('cat');
                 filterBtns.forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.cat === currentCategory);
                 });
+            }
+            if(urlParams.has('brand')) {
+                let brandId = urlParams.get('brand').toLowerCase().trim();
+                // Support both clean IDs and legacy full names
+                if (brandId === 'elements wellness') brandId = 'elements';
+                if (brandId === 'on & on' || brandId === 'on&on') brandId = 'onon';
+                if (brandId === 'mi home') brandId = 'mihome';
+
+                if (brandMap[brandId]) {
+                    currentBrand = brandId;
+                    sectionTitle.textContent = `${brandMap[brandId].name} Products`;
+                    filterBtns.forEach(btn => {
+                        btn.classList.toggle('active', btn.dataset.cat === 'all');
+                    });
+                }
             }
 
             function renderProducts() {
@@ -89,7 +118,19 @@
                 const filtered = products.filter(p => {
                     const matchCategory = currentCategory === 'all' || p.category === currentCategory;
                     const matchSearch = p.name.toLowerCase().includes(searchQuery);
-                    return matchCategory && matchSearch;
+                    
+                    let matchBrand = true;
+                    if (currentBrand !== 'all') {
+                        const config = brandMap[currentBrand];
+                        if (currentBrand === 'mihome') {
+                            // Extra safety for Mi Home: match its regex but exclude Indiagro products
+                            matchBrand = !/\bindiagro\b/i.test(p.name) && config.regex.test(p.name);
+                        } else {
+                            matchBrand = config.regex.test(p.name);
+                        }
+                    }
+                    
+                    return matchCategory && matchSearch && matchBrand;
                 });
                 
                 if (filtered.length === 0) {
@@ -102,7 +143,7 @@
                     `;
                     return;
                 }
-
+ 
                 filtered.forEach(product => {
                     const card = document.createElement('div');
                     card.className = 'product-card animate-fade-in';
@@ -120,6 +161,7 @@
                         <div class="product-info">
                             <span class="product-category">${product.category}</span>
                             <a href="product.html?id=${product.id}" class="product-title">${product.name}</a>
+                            <div style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 4px;">Product Code: ${product.productCode}</div>
                             <div class="product-price">${formatPrice(product.price)}</div>
                             <div class="product-actions">
                                 <button class="btn btn-outline" onclick="addToCart(${product.id})">Add to Cart</button>
@@ -130,22 +172,25 @@
                     grid.appendChild(card);
                 });
             }
-
+ 
             // Event Listeners
             searchInput.addEventListener('input', (e) => {
                 searchQuery = e.target.value.toLowerCase();
                 renderProducts();
             });
-
+ 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     filterBtns.forEach(b => b.classList.remove('active'));
                     e.target.classList.add('active');
                     currentCategory = e.target.dataset.cat;
+                    // Reset brand and search title if user clicks a category
+                    currentBrand = 'all';
+                    sectionTitle.textContent = 'Our Formulations';
                     renderProducts();
                 });
             });
-
+ 
             renderProducts();
         });
     </script>

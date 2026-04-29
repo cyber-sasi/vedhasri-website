@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        Mi Lifestyle Products | Direct Selling Company in India
+    </title>
+    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YGDEH95M4V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YGDEH95M4V');
+    </script>
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore the Range of Mi Lifestyle products best direct selling company, offer high quality of Agro, Health, Home,  Personal Care and Food & Beverages Products." />
+    <!--<meta name="keywords" content="DSA" />
+    <meta name="author" content="DSA" />-->
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <!-- Search -->
+    <link rel="stylesheet" href="Assets/responsive-tab/css/responsive-tab.css">
+    <link rel="stylesheet" href="Assets/auto-complete-js/src/jquery.typeahead.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="Assets/select2/css/select2.css">
+    <link rel="stylesheet" href="Assets/responsive-tab/css/responsive-tab.css">
+
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <link rel="canonical" href="https://www.milifestylemarketing.com/product-list.html" />
+    <style>
+        .bannersection {
+            position: relative;
+        }
+
+        .bannerdata {
+            position: absolute;
+            top: 50px;
+            z-index: 99;
+            left: 120px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body ng-app="miProductWeb" ng-controller="masterController" ng-init="masterinit()"
+      ng-cloak>
+    <div class="lds-facebook">
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div>
+        <a href="download_mi_app.aspx" class="download-btn">{{'DOWNLOADAPP'|translate}}</a>
+    </div>
+    <div class="fh5co-loader">
+    </div>
+    <div id="page" ng-controller="productController" ng-init="init()">
+        <div ng-include="'header.htm'">
+        </div>
+        <div class="productlistHeader">
+            <div class="container opporHeader">
+                <section class="bannersection">
+
+                    <div ng-repeat="item in categories" id="banner_{{$index}}" style="display:none" class="innercontent bannerimg" on-finish-render="categoriesRenderFinished">
+
+                        <img src="img/product/{{item.bannerImg}}.jpg" alt="{{item.Altimg}}" class="w-100" />
+                        <!--{{item.BannerText}}-->
+                        <div class="bannerdata">
+
+                            <div ng-bind-html="item.BannerText"></div>
+
+                            <!--<h2 style="font-size: 45px; font-weight: 500; color: #0061a9; font-family: 'Roboto', sans-serif; ">Discover the Benifits of <br /><span style="font-size: 40px; color: #fff; background: #0061a9; padding: 2px 12px; font-family: 'Roboto', sans-serif; ">Our Indiagro Products</span></h2><p style="position: absolute; width: 100%; font-size: 18px; top: 107px; font-family: 'Roboto', sans-serif; font-weight: 400; color: #000; line-height: 25px; ">Our popular <b>Indiagro Bhuastra</b> and <b>Indiagro Bhuastra <br />Super</b> ranges are made from natural ingredients and serve<br /> as effective organic fertilizers for healthy plant growth.</p>-->
+                            <!--<h2 style="font-size: 45px; font-weight: 500; color: #0061a9; font-family: 'Roboto', sans-serif; ">Discover the Benifits of
+                            <br/><span style="font-size: 40px; color: #fff; background: #0061a9; padding: 2px 12px; font-family: 'Roboto', sans-serif; ">Our Indiagro Products</span></h2>
+                            <p style="position: absolute; width: 100%; font-size: 18px; top: 107px; font-family: 'Roboto', sans-serif; font-weight: 400; color: #000; line-height: 25px; ">Our popular <b>Indiagro Bhuastra</b> and <b>Indiagro Bhuastra <br/>Super</b> ranges are made from natural ingredients and serve<br /> as effective organic fertilizers for healthy plant growth.</p>-->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div id="fh5co-product" class="fh5co-product">
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-12 listHead">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3>
+                                    {{''|translate}} CATEGORIES
+                                </h3>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="pn-ProductNav_Wrapper">
+                                    <nav id="pnProductNav" class="pn-ProductNav" data-overflowing="none">
+                                        <div id="pnProductNavContents" class="pn-ProductNav_Contents pn-ProductNav_Contents-no-transition" style="transform: none;">
+                                            <a class="pn-ProductNav_Link" data-target="#banner_{{$index}}" aria-selected="{{$index==0}}" ng-repeat="item in categories" ng-bind="item.name" ng-click="ngCategoryClk(item,$index)">{{'PERSONALCARE'|translate}}</a>
+
+                                            <span id="pnIndicator" class="pn-ProductNav_Indicator" style="transform: translateX(0) scaleX(1.03812);
+        background-color: rgb(188, 163, 125);"></span>
+                                        </div>
+                                    </nav>
+                                    <button id="pnAdvancerLeft" class="pn-Advancer pn-Advancer_Left" type="button">
+                                        <svg class="pn-Advancer_Icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 551 1024"><path d="M445.44 38.183L-2.53 512l447.97 473.817 85.857-81.173-409.6-433.23v81.172l409.6-433.23L445.44 38.18z"></path></svg>
+                                    </button>
+                                    <button id="pnAdvancerRight" class="pn-Advancer pn-Advancer_Right" type="button">
+                                        <svg class="pn-Advancer_Icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 551 1024"><path d="M105.56 985.817L553.53 512 105.56 38.183l-85.857 81.173 409.6 433.23v-81.172l-409.6 433.23 85.856 81.174z"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-product1" class="fh5co-product1">
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-12 listBody">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <ul class="unstyled centered" ng-show="subCategories.length>0">
+                                    <li ng-repeat="item in subCategories">
+                                        <input class="styled-checkbox" id="styled-checkbox_{{item.categoryID}}" type="checkbox"
+                                               ng-model="selectedList[item.categoryID]" ng-change="setCheckbox()">
+                                        <label for="styled-checkbox_{{item.categoryID}}">
+                                            <span ng-bind="item.name" class="d-inline-block"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-10">
+                                <p class="no-items-text" ng-show="filterproducts.length==0">
+                                    {{''|translate}}No Items Found
+                                </p>
+                                <section>
+                                    <div id="dv1" class="innercontent" ng-show="filterproducts.length>0">
+                                        <ol class="mi_peoductList">
+                                            <li ng-repeat="item in filterproducts| myfilter:arrCategoryChkBox">
+                                                <!--<a href="ProductDetail.html?productId={{item.productID}}" target="_blank">-->
+                                                <a href="" ng-click="removeParam(item.productID)">
+                                                    <span class="img-box">
+                                                        <img ng-src="{{item.imageURL}}" alt="" />
+                                                    </span>
+                                                    <p class="productName" ng-bind="item.productName">{{''|translate}}On On Spirulina Gold</p>
+                                                    <p class="productCode">{{'PRODUCTCODE'|translate}}: <span ng-bind="item.productCode">IS1165451</span></p>
+                                                    <!-- <p class="productQut">{{''|translate}}Quantity: <span ng-bind="item.quantity">{{''|translate}}60 Capsules</span></p> -->
+                                                </a>
+                                                <div class="productBtn">
+                                                    <a><img src="img/Product_play.png" alt="" /></a>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div id="dv2" class="innercontent" style="display:none">{{''|translate}}The database</div>
+                                    <div id="dv3" class="innercontent" style="display:none">{{''|translate}}Contribute</div>
+                                    <div id="dv4" class="innercontent" style="display:none">{{''|translate}}Registered user</div>
+                                    <div id="dv5" class="innercontent" style="display:none">{{''|translate}}Terms and Conditions</div>
+                                    <div id="dv6" class="innercontent" style="display:none">{{''|translate}}Disclaimer</div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'footer.htm'">
+    </div>
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+    </div>
+    <!-- jQuery -->
+
+    <script src="js/jquery.min.js"></script>
+
+    <!-- jQuery Easing -->
+
+    <script src="js/jquery.easing.1.3.js"></script>
+
+    <!-- Search -->
+
+    <script src="Assets/auto-complete-js/src/jquery.typeahead.js"></script>
+    <script src="js/site.js"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Waypoints -->
+
+    <script src="js/jquery.waypoints.min.js"></script>
+
+    <!-- Stellar Parallax -->
+
+    <script src="js/jquery.stellar.min.js"></script>
+
+    <!-- Carousel -->
+
+    <script src="js/owl.carousel.min.js"></script>
+
+    <!-- Main -->
+
+    <script src="js/main.js"></script>
+
+    <script src="Assets/select2/js/select2.full.js"></script>
+
+    <script src="Assets/responsive-tab/js/responsive-tab.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+    <script src="js/validate.js"></script>
+
+    <script src="js/validateScript.js"></script>
+
+    <script src="js/angular.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.18.1/angular-translate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.18.1/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.8.3/angular-sanitize.js"></script>
+
+
+    <script src="appscripts/app.js"></script>
+
+    <script src="appscripts/services/businessservice.js"></script>
+
+    <script src="appscripts/controllers/mastercontroller.js"></script>
+
+    <script src="appscripts/controllers/productcontroller.js"></script>
+
+    <!--
+    <script>
+        $(".owl-carousel").owlCarousel({
+      loop: true,
+      autoplay: true,
+      items: 1,
+      nav: true,
+      autoplayHoverPause: true,
+      animateOut: 'slideOutUp',
+      animateIn: 'slideInUp'
+    });
+    </script> -->
+    <style>
+        h2.Agro-Care-title {
+            font-size: 35px;
+            font-weight: 500;
+            color: #0061a9;
+            font-family: 'Roboto', sans-serif;
+        }
+        h2.Agro-Care-title span {
+            font-size: 32px;
+            color: #fff;
+            background: #0061a9;
+            padding: 2px 12px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .bannerdata p {
+            position: absolute;
+            width: 100%;
+            font-size: 18px;
+            top: 95px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            color: #000;
+            line-height: 25px;
+        }
+        h2.Agro-Care-titles {
+            font-size: 35px;
+            font-weight: 500;
+            color: #0061a9;
+            font-family: 'Roboto', sans-serif;
+            position: absolute;
+            left: -115px;
+        }
+        p.foodBev {
+            position: absolute;
+            width: 100%;
+            font-size: 18px;
+            top: 95px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            color: #000;
+            line-height: 25px;
+             
+        }
+    </style>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".owl-header").each(function () {
+                $(this).owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    items: 1,
+                    nav: true,
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 3000,
+                    autoplayHoverPause: true,
+
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".brand-owl-carousel").each(function () {
+                $(this).owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    items: 1,
+                    nav: true,
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 3000,
+                    autoplayHoverPause: true,
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $("#pnProductNavContents a").click(function (e) {
+            pnProductNav.setAttribute("data-overflowing", determineOverflow(pnProductNavContents, pnProductNav));
+            moveIndicator(pnProductNav.querySelector("[aria-selected=\"true\"]"), colours[0]);
+            $(".innercontent").hide();
+            $(e.target.attributes["data-target"].value).show();
+        });
+    </script>
+
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 0) {
+                $('.fh5co-nav').addClass("sticky");
+            } else {
+                $('.fh5co-nav').removeClass("sticky");
+            }
+        });
+    </script>
+
+</body>
+</html>

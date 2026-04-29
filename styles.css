@@ -484,6 +484,10 @@ h3 {
   font-weight: 600;
   margin-bottom: var(--spacing-xs);
   color: var(--text-dark);
+  display: block;
+  line-height: 1.4;
+  white-space: normal;
+  overflow: visible;
 }
 
 .product-price {
@@ -539,6 +543,77 @@ h3 {
 .category-content h3 {
   color: white;
   margin: 0;
+}
+
+/* Brand Cards v2 */
+.brand-grid-v2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand-card-v2 {
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.brand-card-v2:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.brand-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-lg);
+}
+
+.brand-logo-container img {
+  max-width: 85%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.brand-card-v2:hover .brand-logo-container img {
+  transform: scale(1.05);
+}
+
+/* Brand Specific Colors */
+.brand-elements { background-color: #FFF0F0; } /* Soft Pink */
+.brand-onon { background-color: #F0F4FF; } /* Soft Blue */
+.brand-indiagro { background-color: #F0FFF4; } /* Soft Green */
+.brand-neustar { background-color: #FFF7ED; } /* Soft Orange */
+.brand-mihome { background-color: #EFF6FF; } /* Soft Light Blue */
+.brand-aahar { background-color: #F0F9FF; } /* Soft Cyan */
+
+@media (max-width: 1024px) {
+  .brand-grid-v2 {
+    max-width: 100%;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-grid-v2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 
 /* Footer */

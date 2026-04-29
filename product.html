@@ -68,13 +68,34 @@
                         <img src="${product.image}" alt="${product.name}">
                     </div>
                     <div class="product-meta animate-fade-in" style="animation-delay: 0.1s">
-                        <p class="product-category" style="font-size: 1rem; margin-bottom: var(--spacing-sm);">${product.category}</p>
+                        <p class="product-category" style="font-size: 1rem; margin-bottom: 2px;">${product.category}</p>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: var(--spacing-sm);">Product Code: ${product.productCode}</p>
                         <h1>${product.name}</h1>
                         <div class="price">${formatPrice(product.price)}</div>
                         
-                        <div class="product-description">
-                            <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: var(--spacing-xs);">Benefits & Description</h3>
-                            <p>${product.description}</p>
+                        <div class="product-info-sections" style="margin-top: var(--spacing-md);">
+                            <div class="description-block" style="margin-bottom: var(--spacing-lg);">
+                                <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-circle-info" style="color: var(--primary-color);"></i> Description
+                                </h3>
+                                <p style="line-height: 1.6; color: var(--text-dark); font-size: 0.95rem;">${product.description || 'Information coming soon.'}</p>
+                            </div>
+                            
+                            <div class="benefits-block">
+                                <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: var(--spacing-sm); display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-star" style="color: var(--primary-color);"></i> Key Benefits
+                                </h3>
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    ${product.benefits && product.benefits.length > 0 
+                                        ? product.benefits.map(benefit => `
+                                            <li style="margin-bottom: 6px; display: flex; align-items: flex-start; gap: 10px;">
+                                                <i class="fa-solid fa-check" style="color: #2e7d32; margin-top: 4px; font-size: 0.8rem;"></i>
+                                                <span style="font-size: 0.95rem; color: var(--text-dark);">${benefit}</span>
+                                            </li>
+                                        `).join('') 
+                                        : '<li style="color: var(--text-light); font-size: 0.9rem;">Benefits details being updated...</li>'}
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="product-actions" style="margin-top: var(--spacing-xl); display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
