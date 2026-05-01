@@ -13,7 +13,8 @@ const products = [
     ],
     description: "Keep your utensils safe and sparkling with our antibacterial dishwash bar. It combines powerful cleaning agents with skin-friendly ingredients to provide a hygienic wash every time.",
     isFeatured: true, 
-    productCode: "IS15270" 
+    productCode: "IS15270",
+    code: "IS15270"
   },
   { 
     id: 46, 
@@ -29,7 +30,8 @@ const products = [
     ],
     description: "A high-performance toilet cleaner that provides complete disinfection and a brilliant shine. Its thick liquid formula clings to the surface for deeper cleaning and long-lasting freshness.",
     isFeatured: false, 
-    productCode: "IS15271" 
+    productCode: "IS15271",
+    code: "IS15271"
   },
   { 
     id: 47, 
@@ -45,7 +47,8 @@ const products = [
     ],
     description: "Ensure a germ-free environment for your family with our powerful floor cleaner. It effectively removes dust and grime while leaving your home smelling fresh and inviting.",
     isFeatured: false, 
-    productCode: "IS15272" 
+    productCode: "IS15272",
+    code: "IS15272"
   },
   { 
     id: 48, 
@@ -61,7 +64,8 @@ const products = [
     ],
     description: "Experience the power of lemon with our concentrated dishwash liquid. It provides an effortless cleaning experience, leaving your dishes shiny and smelling like fresh citrus.",
     isFeatured: false, 
-    productCode: "IS15273" 
+    productCode: "IS15273",
+    code: "IS15273"
   },
   { 
     id: 49, 
@@ -77,7 +81,8 @@ const products = [
     ],
     description: "Our premium liquid detergent provides professional-grade cleaning for all your laundry needs. It penetrates deep into fibers to remove tough stains while keeping your clothes soft and bright.",
     isFeatured: false, 
-    productCode: "IS15274" 
+    productCode: "IS15274",
+    code: "IS15274"
   }
 ];
 
@@ -552,16 +557,16 @@ const personalCareProducts = [
     ],
     description: "Pamper yourself with the richness of milk and the sweetness of strawberries. This luxury bathing bar provides a soft and creamy wash that leaves your skin feeling exceptionally smooth and beautifully fragrant."
   },
-  { id: 98, name: "On & On Turmeric Luxury Bathing Bar 75 Gms", price: 96, image: "assets/images/img97.png", productCode: "IS15105",
-    benefits: [
-      "Traditional Turmeric for natural skin health",
-      "Provides antioxidant protection for skin cells",
-      "Brightens skin and helps reduce blemishes",
-      "Anti-inflammatory properties for skin comfort",
-      "Gives a natural and healthy glow to the body"
-    ],
-    description: "Experience the timeless benefits of Turmeric. Our luxury bathing bar brings the healing and brightening properties of turmeric to your daily bath, ensuring your skin stays clear, radiant, and healthy."
-  }
+  { id: 97, name: "On & On Turmeric Luxury Bathing Bar 75 Gms", price: 96, image: "assets/images/img97.png", productCode: "IS15105",
+      benefits: [
+        "Traditional Turmeric for natural skin health",
+        "Provides antioxidant protection for skin cells",
+        "Brightens skin and helps reduce blemishes",
+        "Anti-inflammatory properties for skin comfort",
+        "Gives a natural and healthy glow to the body"
+      ],
+      description: "Experience the timeless benefits of Turmeric. Our luxury bathing bar brings the healing and brightening properties of turmeric to your daily bath, ensuring your skin stays clear, radiant, and healthy."
+    }
 ];
 
 personalCareProducts.forEach(item => {
@@ -572,9 +577,10 @@ personalCareProducts.forEach(item => {
         category: "personalcare",
         image: item.image,
         productCode: item.productCode,
+        code: item.productCode,
         benefits: item.benefits,
         description: item.description,
-        isFeatured: item.id <= 53
+        isFeatured: item.id >= 50 && item.id <= 53
     });
 });
 
@@ -1000,7 +1006,7 @@ const healthCodes = [
     ],
     description: "Energize your nervous system with Nervenergy. This specialized supplement provides essential nutrients that support nerve health and help reduce daily discomfort, keeping your mind and body perfectly in sync."
 },
-{ id: 23, name: "On&on Herbal Roll On Inhaler", price: 180, image: "assets/images/img43.png", productCode: "IS15004",
+{ id: 43, name: "On&on Herbal Roll On Inhaler", price: 180, image: "assets/images/img43.png", productCode: "IS15004",
     benefits: [
       "Instant relief from headache and nasal congestion",
       "Portable and easy-to-use roll-on design",
@@ -1031,6 +1037,7 @@ for (let i = 1; i <= 44; i++) {
         category: "healthcare",
         image: info.image,
         productCode: info.productCode,
+        code: info.productCode,
         description: info.description,
         benefits: info.benefits,
         isFeatured: i <= 4
@@ -1135,6 +1142,7 @@ agroCareProducts.forEach(item => {
     products.push({
         ...item,
         category: "agrocare",
+        code: item.productCode,
         description: item.description,
         benefits: item.benefits,
         isFeatured: false
@@ -1219,6 +1227,7 @@ foodAndBeveragesProducts.forEach(item => {
     products.push({
         ...item,
         category: "foodandbeverages",
+        code: item.productCode,
         description: item.description,
         benefits: item.benefits,
         isFeatured: false

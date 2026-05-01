@@ -117,7 +117,11 @@
                 
                 const filtered = products.filter(p => {
                     const matchCategory = currentCategory === 'all' || p.category === currentCategory;
-                    const matchSearch = p.name.toLowerCase().includes(searchQuery);
+                    
+                    const query = searchQuery.trim().toLowerCase();
+                    const matchName = p.name.toLowerCase().includes(query);
+                    const matchCode = p.productCode && p.productCode.toLowerCase().includes(query);
+                    const matchSearch = matchName || matchCode;
                     
                     let matchBrand = true;
                     if (currentBrand !== 'all') {
